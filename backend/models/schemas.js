@@ -2,6 +2,35 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
+const userExerciseSchema = new Schema({
+  instructions: [{ type: String }],
+  name: { type: String },
+  repetitions: { type: Number },
+  sets: { type: Number },
+  targetedMuscles: { type: String },
+});
+
+const daySchema = new Schema({
+  exercises: [userExerciseSchema],
+});
+
+const weekSchema = new Schema({
+  Sunday: daySchema,
+  String,
+  Monday: daySchema,
+  String,
+  Tuesday: daySchema,
+  String,
+  Wednesday: daySchema,
+  String,
+  Thursday: daySchema,
+  String,
+  Friday: daySchema,
+  String,
+  Saturday: daySchema,
+  String,
+});
+
 const userDataSchema = new Schema({
   name: { type: String },
   email: { type: String },
@@ -9,9 +38,10 @@ const userDataSchema = new Schema({
   age: { type: Number },
   gender: { type: String },
   weight: { type: Number },
-  Height: { type: Number },
+  height: { type: Number },
   levelOfExercise: { type: String },
   targetedMuscles: { type: String },
+  schedule: weekSchema,
   entryDate: { type: Date, default: Date.now },
 });
 

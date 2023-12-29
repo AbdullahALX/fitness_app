@@ -6,7 +6,7 @@ import axios from 'axios';
 const Forms = () => {
   const [open, setOpen] = useState(false);
   const muscles =
-    'Biceps, Hamstring, Triceps, Latissimus Dorsi, Quadriceps, Cardiac, Calf, Trapezius, Glutes, Gastrocnemius, Pectorals, Deltoid, Erector spinae'.split(
+    'Biceps, Hamstring, Triceps, Latissimus Dorsi, Quadriceps, Cardiac, Calf, Trapezius, Glutes, Gastrocnemius, Pectorals, Deltoid, Erector spinae, General'.split(
       ', '
     );
 
