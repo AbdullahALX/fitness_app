@@ -38,7 +38,7 @@ const userDataSchema = new Schema({
   age: { type: Number },
   gender: { type: String },
   weight: { type: Number },
-  height: { type: Number },
+  height: { type: Number, type: String },
   levelOfExercise: { type: String },
   targetedMuscles: { type: String },
   workoutDays: { type: String },
