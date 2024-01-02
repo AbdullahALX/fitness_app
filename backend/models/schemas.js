@@ -5,8 +5,8 @@ const Schema = mongoose.Schema;
 const userExerciseSchema = new Schema({
   instructions: [{ type: String }],
   name: { type: String },
-  repetitions: { type: Number },
-  sets: { type: Number },
+  repetitions: { type: Number, type: String },
+  sets: { type: Number, type: String },
   targetedMuscles: { type: String },
 });
 
@@ -41,6 +41,7 @@ const userDataSchema = new Schema({
   height: { type: Number },
   levelOfExercise: { type: String },
   targetedMuscles: { type: String },
+  workoutDays: { type: String },
   schedule: weekSchema,
   entryDate: { type: Date, default: Date.now },
 });

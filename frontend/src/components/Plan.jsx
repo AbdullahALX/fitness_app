@@ -29,7 +29,7 @@ const Plan = () => {
           name="name"
           onChange={(e) => setName(e.target.value)}
           className=" my-5 block w-full py-3 px-2 rounded-md"
-          placeholder="Enter your name"
+          placeholder="Enter your email"
         />
         <button
           className="my-5 block w-full py-3 px-2 bg-purple-500 rounded-md hover:bg-purple-400 cursor-pointer"
@@ -37,11 +37,6 @@ const Plan = () => {
         >
           run
         </button>
-        {/* {data && (
-          <p className="   flex-nowrap  overflow-y-auto">
-            {JSON.stringify(data)}
-          </p>
-        )} */}
       </div>
     </div>
   );

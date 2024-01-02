@@ -6,7 +6,12 @@ import axios from 'axios';
 const Forms = () => {
   const [open, setOpen] = useState(false);
   const muscles =
-    'Biceps, Hamstring, Triceps, Latissimus Dorsi, Quadriceps, Cardiac, Calf, Trapezius, Glutes, Gastrocnemius, Pectorals, Deltoid, Erector spinae, General'.split(
+    'Biceps, Hamstring, Triceps, Latissimus Dorsi, Quadriceps, Cardiac, Calf, Trapezius, Glutes, Gastrocnemius, Pectorals, Deltoid, Erector spinae, None'.split(
+      ', '
+    );
+
+  const days =
+    'Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday'.split(
       ', '
     );
 
@@ -50,7 +55,7 @@ const Forms = () => {
         <input
           className=" my-5 block w-full py-3 px-2 rounded-md"
           placeholder="phone"
-          {...register('phone', { required: true })}
+          {...register('phone')}
         />
         <input
           className=" my-5 block w-full py-3 px-2 rounded-md"
@@ -91,14 +96,14 @@ const Forms = () => {
           </option>
           1- Light exercise 1-3 times a week
           <option value="Light exercise 1-3 times a week">
-            Light exercise 1-3 times a week
+            Light exercise 3 times a week
           </option>
           <option value="Moderate exercise 4-5 times a week">
-            Moderate exercise 4-5 times a week
+            Moderate exercise 5 times a week
           </option>
           <option value="Active  daily exercise">Active daily exercise</option>
-          <option value="Very active intense exercise 6-7 times a week">
-            Very active intense exercise 6-7 times a week
+          <option value="Very active intense exercise 6 times a week">
+            Very active intense exercise 7 times a week
           </option>
           <option value="Extra active intense daily exercise">
             Extra active intense daily exercise
@@ -119,6 +124,24 @@ const Forms = () => {
                 {...register('targeted_muscles', { required: true })}
               />
               {c}
+            </label>
+          ))}
+        </fieldset>
+
+        <fieldset
+          className={`mt-5 block w-full  h-[200px] py-3 px-2 bg-white  rounded-md border-4 hover:border-purple-300 cursor-pointer overflow-y-scroll `}
+          onClick={() => setOpen(!open)}
+        >
+          <label className="my-3 block text-xl">Workout days </label>
+          {days.map((d, i) => (
+            <label key={d} className="block my-2 mx-2 ">
+              <input
+                type="checkbox"
+                value={d}
+                name="days"
+                {...register('workoutDays', { required: true })}
+              />
+              {d}
             </label>
           ))}
         </fieldset>

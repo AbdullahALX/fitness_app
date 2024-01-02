@@ -9,10 +9,10 @@ import schemas from '../backend/models/schemas.js';
 import bodyParser from 'body-parser';
 
 const app = express();
+dotenv.config();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-dotenv.config();
 
 app.use('/', router);
 

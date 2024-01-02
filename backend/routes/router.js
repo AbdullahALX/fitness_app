@@ -2,14 +2,13 @@ import express from 'express';
 import { calcBmi, calcProtein } from '../allCalculation.js';
 import schemas from '../models/schemas.js';
 import OpenAI from 'openai';
+import dotenv from 'dotenv';
 
 import * as fs from 'fs';
 
-const openAi = new OpenAI({
-  apiKey: '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',
-});
+dotenv.config();
 
-// const messages_non_lawyer =
+const openAi = new OpenAI({ apiKey: process.env.OPEN_AI_API });
 
 const router = express.Router();
 
@@ -22,6 +21,7 @@ const addUser = (data) => {
     gender: data.gender,
     weight: data.weight,
     height: data.height,
+    workoutDays: data.workoutDays.join(', '),
     targetedMuscles: data.targeted_muscles.join(', '),
     levelOfExercise: data.levelOfExercise,
   });
@@ -37,9 +37,9 @@ const updateUser = (data) => {
     age: data.age,
     gender: data.gender,
     weight: data.weight,
+    workoutDays: data.workoutDays.join(', '),
     height: data.height,
     schedule: {},
-
     targetedMuscles: data.targeted_muscles.join(', '),
     levelOfExercise: data.levelOfExercise,
   });
@@ -47,19 +47,48 @@ const updateUser = (data) => {
   const saveUser = newUser.save();
 };
 
-router.post('/api', (req, res) => {
+router.post('/api', async (req, res) => {
   const data = req.body;
 
   console.log(data);
-  addUser(data);
-  res.end('User Added!');
+  const user = schemas.UsersData;
+  const userExist = await user.exists({ email: data.email });
+  if (userExist) {
+    res.status(400).send('User was already created');
+  } else {
+    addUser(data);
+
+    res.status(200).send('User Added!');
+  }
 });
 
-router.get('/users/:name', async (req, res) => {
+router.get('/plan/:email', async (req, res) => {
   try {
-    const { name } = req.params;
+    const { email } = req.params;
     const users = schemas.UsersData;
-    const userData = await users.findOne({ name: name });
+    const userData = await users.findOne({ email: email });
+    if (userData && userData.schedule) {
+      res.json({
+        userData: userData,
+      });
+      console.log('Got em!');
+    } else if (userData && !userData.schedule) {
+      console.log('User does not Plan');
+      res.status(400).send('User does not Plan');
+    } else {
+      console.log('User not found');
+      res.status(400).send('User not found');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.get('/users/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+    const users = schemas.UsersData;
+    const userData = await users.findOne({ email: email });
     if (userData && !userData.schedule) {
       console.log(userData);
 
@@ -68,8 +97,8 @@ router.get('/users/:name', async (req, res) => {
         messages: [
           {
             role: 'system',
-            content: `Create a ${userData.levelOfExercise} split workout plan for ${userData.gender} as ${userData.age} years with ${userData.weight},  ${userData.height} with these targeted Muscles  ${userData.targetedMuscles},
-            ' Use ${userData.levelOfExercise}  to specify how many days , at this order  Sunday, Monday,Tuesday,Wednesday,Thursday,Friday,Saturday, List ONLY workout days, provide at least 4 exercises eaqch days, follow provided format to output in JSON for each day:
+            content: `Create a ${userData.levelOfExercise} split workout plan for ${userData.gender} as ${userData.age} years with ${userData.weight},  ${userData.height} with these targeted Muscles  ${userData.targetedMuscles}  ,
+            ' Use ${userData.workoutDays}  to specify exactly how many days for workout List ONLY workout days, provide at least 4 exercises each days, follow provided format to output in JSON for each day:
 
             "day": []
 
