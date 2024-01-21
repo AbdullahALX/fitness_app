@@ -25,7 +25,7 @@ const Plan = () => {
     setShow(true);
     let reqName = email;
     axios
-      .get(url + `users/${reqName}`)
+      .get(`${url}/users/${reqName}`)
       .then((response) => {
         console.log(email);
         setData(response.data);

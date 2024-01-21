@@ -178,7 +178,7 @@ const ShowPlan = () => {
   const onSubmit = async () => {
     let reqName = User;
     console.log(reqName);
-    axios.get(url + `/plan/${reqName}`).then((response) => {
+    axios.get(`${url}/plan/${reqName}`).then((response) => {
       console.log(response);
       setData(response.data.userData.schedule);
       setDays(response.data.userData.workoutDays.split(', '));
