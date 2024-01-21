@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import img3 from '../assets/img3.svg';
 
 const Plan = () => {
-  const url = 'https://fitness-app-server-7k3b.onrender.com/';
+  const url = 'https://fitness-app-server-7k3b.onrender.com';
   const [data, setData] = useState('');
   const [show, setShow] = useState(false);
   const [Done, setDone] = useState(false);

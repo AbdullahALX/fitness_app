@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import img2 from '../assets/img2.svg';
 
 const Forms2 = () => {
-  const url = 'https://fitness-app-server-7k3b.onrender.com/';
+  const url = 'https://fitness-app-server-7k3b.onrender.com';
   const [show, setShow] = useState(false);
   const [Done, setDone] = useState(false);
   const [emailAlready, setEmailAlready] = useState('');

@@ -142,7 +142,7 @@ const RestRow = ({ data, day }) => {
 };
 
 const ShowPlan = () => {
-  const url = 'https://fitness-app-server-7k3b.onrender.com/';
+  const url = 'https://fitness-app-server-7k3b.onrender.com';
   const [data, setData] = useState();
   const [days, setDays] = useState([]);
   const [restDay, setRestDay] = useState(false);
