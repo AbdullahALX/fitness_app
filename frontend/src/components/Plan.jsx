@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 import img3 from '../assets/img3.svg';
 
 const Plan = () => {
@@ -69,8 +69,8 @@ const Plan = () => {
               {' '}
               User not found,
             </h1>
-            <a
-              href="addUser"
+            <Link
+              to="/addUser"
               onClick={() => setIsUser(!isUser)}
               type="button"
               className="text-[#7b73f2] font-medium  text-lg font-mono mx-2 py-2.5 text-center inline-flex items-center hover:underline"
@@ -91,7 +91,7 @@ const Plan = () => {
                   d="M1 5h12m0 0L9 1m4 4L9 9"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
         )}
         {Done ? (
@@ -100,9 +100,9 @@ const Plan = () => {
               {' '}
               You already have a schedule,
             </h1>
-            <a
+            <Link
               onClick={() => console.log(email)}
-              href={`/showPlan/${email} `}
+              to={`/showPlan/${email} `}
               type="button"
               className="text-[#7b73f2] font-medium  text-lg font-mono mx-2 py-2.5 text-center inline-flex items-center hover:underline"
             >
@@ -122,7 +122,7 @@ const Plan = () => {
                   d="M1 5h12m0 0L9 1m4 4L9 9"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
         ) : (
           data && (
@@ -131,9 +131,9 @@ const Plan = () => {
                 {' '}
                 Successfully generated the schedule,
               </h1>
-              <a
+              <Link
                 onClick={() => console.log(email)}
-                href={`/showPlan/${email} `}
+                to={`/showPlan/${email} `}
                 type="button"
                 className="text-[#7b73f2] font-medium  text-lg font-mono mx-2 py-2.5 text-center inline-flex items-center hover:underline"
               >
@@ -153,7 +153,7 @@ const Plan = () => {
                     d="M1 5h12m0 0L9 1m4 4L9 9"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
           )
         )}

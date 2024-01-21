@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import img2 from '../assets/img2.svg';
 
@@ -415,13 +416,13 @@ const Forms2 = () => {
                     Success, User Added!{' '}
                   </p>
 
-                  <a
-                    href="makePlan"
+                  <Link
+                    to="/makePlan"
                     type="button"
                     className="py-2 px-3 text-sm font-medium text-center text-white bg-green-600  rounded hover:bg-green-700  focus:outline-none  flex cursor-pointer"
                   >
                     Continue
-                  </a>
+                  </Link>
                 </>
               ) : (
                 <>
@@ -429,13 +430,13 @@ const Forms2 = () => {
                     User was already created!
                   </p>
 
-                  <a
-                    href="makePlan"
+                  <Link
+                    to="/makePlan"
                     type="button"
                     className="py-2 px-3 text-sm font-medium text-center bg-[#7b73f2] text-white rounded hover:bg-[#645aeb]  focus:outline-none  flex cursor-pointer"
                   >
                     Continue
-                  </a>
+                  </Link>
                 </>
               )}
             </div>

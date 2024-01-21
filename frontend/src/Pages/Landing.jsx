@@ -2,6 +2,7 @@ import React from 'react';
 import NavLink from '../components/NavLink';
 import logo from '../assets/logo2.png';
 import img1 from '../assets/img1.svg';
+import { Link } from 'react-router-dom';
 
 const Landing = () => {
   return (
@@ -38,8 +39,8 @@ const Landing = () => {
               AI
             </span>
           </p>
-          <a
-            href="addUser"
+          <Link
+            to="/addUser"
             className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center bg-[#7b73f2]  hover:bg-[#877ff8] text-white border-b-4 border-[#6a60ec] hover:border-[#5b50f1] rounded  cursor-pointer"
           >
             Get started
@@ -55,7 +56,7 @@ const Landing = () => {
                 clip-rule="evenodd"
               ></path>
             </svg>
-          </a>
+          </Link>
         </div>
         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex ">
           <img src={img1} alt="mockup" />
