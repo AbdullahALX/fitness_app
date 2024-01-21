@@ -10,7 +10,7 @@
 
   <h1>Welcome to GymGrids - Your AI-Powered Fitness Companion</h1>
   
-  <h1>Website Link <a hred="https://fitness-app-client.onrender.com/" target=”_blank”>here</a></h1>
+  <h1>Website Link <a href="https://fitness-app-client.onrender.com/" target=”_blank”>here</a></h1>
   
 
   <p>Discover GymGrids, your ultimate destination for personalized split workout and nutrition plans, now enhanced with cutting-edge artificial intelligence. GymGrids combines AI technology with expert guidance to take your fitness journey to the next level. Whether you're a seasoned athlete or a beginner, GymGrids is designed to meet your unique needs.</p>
