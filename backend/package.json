@@ -1,12 +1,16 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  "engines": {
+    "node": "18.x"
+  },
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
+    "start": "node index.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTIONS=false npm install --prefix frontend && npm run dist --prefix frontend"
   },
   "keywords": [],

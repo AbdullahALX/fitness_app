@@ -142,6 +142,7 @@ const RestRow = ({ data, day }) => {
 };
 
 const ShowPlan = () => {
+  const url = 'https://fitness-app-server-7k3b.onrender.com/';
   const [data, setData] = useState();
   const [days, setDays] = useState([]);
   const [restDay, setRestDay] = useState(false);
@@ -177,7 +178,7 @@ const ShowPlan = () => {
   const onSubmit = async () => {
     let reqName = User;
     console.log(reqName);
-    axios.get(`http://localhost:3002/plan/${reqName}`).then((response) => {
+    axios.get(url + `/plan/${reqName}`).then((response) => {
       console.log(response);
       setData(response.data.userData.schedule);
       setDays(response.data.userData.workoutDays.split(', '));

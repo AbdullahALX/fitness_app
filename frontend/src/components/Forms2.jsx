@@ -6,6 +6,7 @@ import axios from 'axios';
 import img2 from '../assets/img2.svg';
 
 const Forms2 = () => {
+  const url = 'https://fitness-app-server-7k3b.onrender.com/';
   const [show, setShow] = useState(false);
   const [Done, setDone] = useState(false);
   const [emailAlready, setEmailAlready] = useState('');
@@ -43,7 +44,7 @@ const Forms2 = () => {
     const dataFinsl = JSON.stringify(data);
     console.log(dataFinsl);
     await axios
-      .post('http://localhost:3002/api', data)
+      .post(url + '/api', data)
       .then((res) => {
         if (res.status == 200) {
           handleSubmitStatus(true);

@@ -5,6 +5,7 @@ import axios from 'axios';
 import img3 from '../assets/img3.svg';
 
 const Plan = () => {
+  const url = 'https://fitness-app-server-7k3b.onrender.com/';
   const [data, setData] = useState('');
   const [show, setShow] = useState(false);
   const [Done, setDone] = useState(false);
@@ -24,7 +25,7 @@ const Plan = () => {
     setShow(true);
     let reqName = email;
     axios
-      .get(`http://localhost:3002/users/${reqName}`)
+      .get(url + `users/${reqName}`)
       .then((response) => {
         console.log(email);
         setData(response.data);
